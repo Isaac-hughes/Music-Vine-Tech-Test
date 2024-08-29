@@ -26,7 +26,7 @@ const SearchBar = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            "X-TYPESENSE-API-KEY": "MqZdBn4VL8k7IqhuMKOSNuBxmU0isNLk",
+            "X-TYPESENSE-API-KEY": process.env.API_KEY || "",
           },
         }
       );
