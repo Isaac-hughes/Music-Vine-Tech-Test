@@ -6,12 +6,14 @@ import { SearchInput } from "./SearchInput/SearchInput";
 import { SearchResults } from "./SearchResults/SearchResults";
 import { PaginationControls } from "./PaginationControls/PaginationControls";
 import { useSearchResults } from "../../hooks/useSearchResults/useSearchResults";
+import { useAudioManager } from "../../hooks/useAudioManager/useAudioManager";
 
 export const SearchBar = () => {
   const [searchType, setSearchType] = useState<"tracks" | "sfx">("tracks");
   const [query, setQuery] = useState("");
   const [resultsPerPage, setResultsPerPage] = useState(5);
   const [page, setPage] = useState(1);
+  const { stopAudio } = useAudioManager();
 
   const { data, error, isLoading } = useSearchResults(
     searchType,
@@ -40,15 +42,18 @@ export const SearchBar = () => {
         searchType={searchType}
         query={query}
         onSearchTypeChange={(e) => {
+          stopAudio();
           setSearchType(e.target.value as "tracks" | "sfx");
           setPage(1);
         }}
         onQueryChange={(e) => {
+          stopAudio();
           setQuery(e.target.value);
           setPage(1);
         }}
         resultsPerPage={resultsPerPage}
         onResultsPerPageChange={(e) => {
+          stopAudio();
           setResultsPerPage(Number(e.target.value));
           setPage(1);
         }}
@@ -65,12 +70,14 @@ export const SearchBar = () => {
             page={page}
             resultsPerPage={resultsPerPage}
           />
-          <PaginationControls
-            page={page}
-            totalPages={totalPages}
-            onPrevious={() => handleResultsPagination("previous")}
-            onNext={() => handleResultsPagination("next")}
-          />
+          {data.found > 0 && (
+            <PaginationControls
+              page={page}
+              totalPages={totalPages}
+              onPrevious={() => handleResultsPagination("previous")}
+              onNext={() => handleResultsPagination("next")}
+            />
+          )}
         </div>
       )}
     </div>

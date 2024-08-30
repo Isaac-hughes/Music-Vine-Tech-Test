@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./PaginationControls.module.css";
 
 export const PaginationControls = ({
   page,
@@ -11,11 +12,22 @@ export const PaginationControls = ({
   onPrevious: () => void;
   onNext: () => void;
 }) => (
-  <div>
-    <button disabled={page === 1} onClick={onPrevious}>
+  <div className={styles.paginationControls}>
+    <button
+      className={styles.paginationButton}
+      disabled={page === 1 || totalPages === 1}
+      onClick={onPrevious}
+    >
       Previous page
     </button>
-    <button disabled={page === totalPages} onClick={onNext}>
+    <span className={styles.paginationInfo}>
+      Page {page} of {totalPages}
+    </span>
+    <button
+      className={styles.paginationButton}
+      disabled={page === totalPages || totalPages === 0}
+      onClick={onNext}
+    >
       Next page
     </button>
   </div>
