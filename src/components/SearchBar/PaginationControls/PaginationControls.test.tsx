@@ -63,4 +63,28 @@ describe("PaginationControls", () => {
 
     expect(mockOnNext).toHaveBeenCalledTimes(1);
   });
+
+  it('should disable both buttons and display "Page 0 of 0" when totalPages is 0', () => {
+    renderPaginationControls({ page: 0, totalPages: 0 });
+
+    const previousButton = screen.getByText("Previous page");
+    const nextButton = screen.getByText("Next page");
+    const paginationInfo = screen.getByText("Page 0 of 0");
+
+    expect(previousButton).toBeDisabled();
+    expect(nextButton).toBeDisabled();
+    expect(paginationInfo).toBeInTheDocument();
+  });
+
+  it("should disable both buttons when there is only one page", () => {
+    renderPaginationControls({ page: 1, totalPages: 1 });
+
+    const previousButton = screen.getByText("Previous page");
+    const nextButton = screen.getByText("Next page");
+    const paginationInfo = screen.getByText("Page 1 of 1");
+
+    expect(previousButton).toBeDisabled();
+    expect(nextButton).toBeDisabled();
+    expect(paginationInfo).toBeInTheDocument();
+  });
 });

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SearchResults.module.css";
 import { useAudioManager } from "../../../hooks/useAudioManager/useAudioManager";
 
@@ -52,6 +51,7 @@ export const SearchResults = ({
                         onClick={() =>
                           handleAudioToggle(previewUri, hit.document.id)
                         }
+                        data-testid={`play-button-${hit.document.id}`}
                       >
                         {isPlaying === hit.document.id ? "⏸" : "▶"}
                       </button>

@@ -11,7 +11,7 @@ import { useAudioManager } from "../../hooks/useAudioManager/useAudioManager";
 export const SearchBar = () => {
   const [searchType, setSearchType] = useState<"tracks" | "sfx">("tracks");
   const [query, setQuery] = useState("");
-  const [resultsPerPage, setResultsPerPage] = useState(5);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const { stopAudio } = useAudioManager();
 
