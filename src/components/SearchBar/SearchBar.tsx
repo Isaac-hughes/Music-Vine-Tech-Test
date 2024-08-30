@@ -7,6 +7,7 @@ import { SearchResults } from "./SearchResults/SearchResults";
 import { PaginationControls } from "./PaginationControls/PaginationControls";
 import { useSearchResults } from "../../hooks/useSearchResults/useSearchResults";
 import { useAudioManager } from "../../hooks/useAudioManager/useAudioManager";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 export const SearchBar = () => {
   const [searchType, setSearchType] = useState<"tracks" | "sfx">("tracks");
@@ -58,11 +59,13 @@ export const SearchBar = () => {
           setPage(1);
         }}
       />
-
-      {isLoading && <p>Loading...</p>}
-      {!query && <p>Search for a song</p>}
+      {isLoading && <LoadingSpinner />}
+      {!query && (
+        <p className={styles.searchPrompt}>
+          🎵 Search for an audio file for your project 🎶
+        </p>
+      )}{" "}
       {error && <p>{data?.message}</p>}
-
       {data && !isLoading && (
         <div className={styles.resultsWrapper}>
           <SearchResults
