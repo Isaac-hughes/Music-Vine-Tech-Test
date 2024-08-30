@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./SearchResults.module.css";
 
 export const SearchResults = ({
   data,
@@ -9,24 +9,29 @@ export const SearchResults = ({
   page: number;
   resultsPerPage: number;
 }) => (
-  <div>
+  <div className={styles.resultsWrapper}>
     {data.found === 0 ? (
       <p>No tracks found</p>
     ) : (
-      <>
-        <p>Total results: {data?.found}</p>
-        <p>
-          Page {page} of {Math.ceil(data?.found / resultsPerPage)}
-        </p>
-        <ul>
+      <div className={styles.results}>
+        <div className={styles.resultsMetaData}>
+          <p>Total results: {data?.found}</p>
+          <p>
+            Page {page} of {Math.ceil(data?.found / resultsPerPage)}
+          </p>
+        </div>
+        <ul className={styles.resultsList}>
           {data?.hits?.map((hit: any) => (
-            <li key={hit.document.id}>
-              <h2>{hit.document.artist}</h2>
-              <p>{hit.document.name}</p>
+            <li className={styles.result} key={hit.document.id}>
+              <img src={hit.document.image} />
+              <div className={styles.resultData}>
+                <h2>{hit.document.artist}</h2>
+                <p>{hit.document.name}</p>
+              </div>
             </li>
           ))}
         </ul>
-      </>
+      </div>
     )}
   </div>
 );

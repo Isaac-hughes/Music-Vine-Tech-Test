@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../SearchBar.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./SearchInput.module.css";
 
 export const SearchInput = ({
   searchType,
@@ -15,23 +15,49 @@ export const SearchInput = ({
   onQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   resultsPerPage: number;
   onResultsPerPageChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}) => (
-  <div className={styles.searchInputContainer}>
-    <select value={searchType} onChange={onSearchTypeChange}>
-      <option value="tracks">Tracks</option>
-      <option value="sfx">SFX</option>
-    </select>
-    <input
-      type="text"
-      value={query}
-      onChange={onQueryChange}
-      placeholder={`Search ${searchType}`}
-      className={styles.searchInput}
-    />
-    <select value={resultsPerPage} onChange={onResultsPerPageChange}>
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-    </select>
-  </div>
-);
+}) => {
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  const placeholders = [
+    `Find ${searchType} for your movie`,
+    `Find ${searchType} for your podcast`,
+    `Find ${searchType} for your video`,
+    `Find ${searchType} for your presentation`,
+  ];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholders.length);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [searchType, placeholders.length]);
+
+  return (
+    <div className={styles.searchInputContainer}>
+      <div className={styles.selectWrapper}>
+        <select value={searchType} onChange={onSearchTypeChange}>
+          <option value="tracks">Tracks</option>
+          <option value="sfx">SFX</option>
+        </select>
+      </div>
+      <div className={styles.inputWrapper}>
+        <input
+          type="text"
+          value={query}
+          onChange={onQueryChange}
+          placeholder={placeholders[placeholderIndex]}
+          className={styles.input}
+        />
+      </div>
+      <div className={styles.selectWrapper}>
+        <label>Results per page:</label>
+        <select value={resultsPerPage} onChange={onResultsPerPageChange}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+    </div>
+  );
+};

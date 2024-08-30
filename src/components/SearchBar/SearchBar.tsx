@@ -35,7 +35,7 @@ export const SearchBar = () => {
   const totalPages = data ? Math.ceil(data.found / resultsPerPage) : 1;
 
   return (
-    <div className={styles.searchBarContainer}>
+    <div className={styles.contentWrapper}>
       <SearchInput
         searchType={searchType}
         query={query}
@@ -59,7 +59,7 @@ export const SearchBar = () => {
       {error && <p>{data?.message}</p>}
 
       {data && !isLoading && (
-        <>
+        <div className={styles.resultsWrapper}>
           <SearchResults
             data={data}
             page={page}
@@ -71,7 +71,7 @@ export const SearchBar = () => {
             onPrevious={() => handleResultsPagination("previous")}
             onNext={() => handleResultsPagination("next")}
           />
-        </>
+        </div>
       )}
     </div>
   );

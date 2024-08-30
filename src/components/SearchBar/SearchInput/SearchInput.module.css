@@ -1,0 +1,59 @@
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2% 5vw;
+  width: calc(100% - 10vw);
+  justify-content: space-between;
+}
+
+.inputWrapper {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputWrapper input {
+  width: 80%;
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.selectWrapper {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectWrapper select {
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* for smaller screens  */
+
+@media (max-width: 768px) {
+  .searchInputContainer {
+    flex-direction: column;
+    padding: 2% 5vw;
+  }
+
+  .inputWrapper {
+    width: 100%;
+    margin-bottom: 2%;
+  }
+
+  .inputWrapper input {
+    width: 100%;
+  }
+
+  .selectWrapper {
+    width: 100%;
+  }
+
+  .selectWrapper select {
+    width: 100%;
+  }
+}

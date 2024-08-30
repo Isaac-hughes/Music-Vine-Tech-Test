@@ -1,0 +1,53 @@
+.resultsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.results {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.resultsMetaData {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.resultsMetaData p {
+  margin: 10px;
+}
+
+.resultsList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.resultsList .result {
+  width: 45%;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.resultsList .result img {
+  width: 45%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.resultsList .result .resultData {
+  width: 45%;
+  margin: 10px 0;
+}
