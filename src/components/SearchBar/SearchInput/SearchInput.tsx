@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./SearchInput.module.css";
+import Image from "next/image";
 
 export const SearchInput = ({
   searchType,
@@ -35,6 +36,15 @@ export const SearchInput = ({
 
   return (
     <div className={styles.searchInputContainer}>
+      <div className={styles.logoWrapper}>
+        <Image
+          src="/assets/uppbeatLogo.png"
+          alt="Uppbeat Logo"
+          width={50}
+          height={50}
+          className={styles.logo}
+        />
+      </div>
       <div className={styles.selectWrapper}>
         <select value={searchType} onChange={onSearchTypeChange}>
           <option value="tracks">Tracks</option>

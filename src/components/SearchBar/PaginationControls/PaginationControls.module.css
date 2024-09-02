@@ -8,8 +8,8 @@
 .paginationButton {
   padding: 10px 20px;
   margin: 0 10px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-primary-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -18,17 +18,18 @@
 }
 
 .paginationButton:disabled {
-  background-color: #ccc;
+  background-color: var(--secondary-color);
+  color: var(--text-secondary-color);
   cursor: not-allowed;
 }
 
 .paginationButton:not(:disabled):hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color);
 }
 
 .paginationInfo {
   font-size: 16px;
-  color: #333;
+  color: var(--text-primary-color);
   margin: 0 10px;
 }
 

@@ -2,47 +2,89 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2% 5vw;
-  width: calc(100% - 10vw);
+  padding: 1.5% 4vw;
+  width: calc(100% - 8vw);
   justify-content: space-between;
+  background-color: var(--surface-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgb(50, 52, 52);
+}
+
+.logoWrapper {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  max-width: 40px; /* Adjust the size of the logo */
 }
 
 .inputWrapper {
-  width: 70%;
+  width: 50%;
   display: flex;
   justify-content: center;
 }
 
 .inputWrapper input {
-  width: 80%;
-  padding: 2%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  color: var(--text-primary-color);
+  font-size: 16px;
+}
+
+.inputWrapper ::placeholder {
+  color: var(--text-secondary-color);
 }
 
 .selectWrapper {
   width: 15%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .selectWrapper select {
-  padding: 2%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  color: var(--text-primary-color);
+  font-size: 16px;
+}
+
+.selectWrapper label {
+  margin-right: 10px;
+  color: var(--text-primary-color);
+  font-size: 16px;
 }
 
 /* for smaller screens  */
-
 @media (max-width: 768px) {
   .searchInputContainer {
     flex-direction: column;
     padding: 2% 5vw;
+    width: calc(100% - 10vw);
+  }
+
+  .logoWrapper {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .logo {
+    max-width: 100px;
   }
 
   .inputWrapper {
     width: 100%;
-    margin-bottom: 2%;
+    margin: 15px 0;
   }
 
   .inputWrapper input {

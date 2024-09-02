@@ -61,9 +61,11 @@ export const SearchBar = () => {
       />
       {isLoading && <LoadingSpinner />}
       {!query && (
-        <p className={styles.searchPrompt}>
-          🎵 Search for an audio file for your project 🎶
-        </p>
+        <div className={styles.searchPromptWrapper}>
+          <p className={styles.searchPrompt}>
+            Use Uppbeat to find the next track for your project
+          </p>
+        </div>
       )}{" "}
       {error && <p>{data?.message}</p>}
       {data && !isLoading && (

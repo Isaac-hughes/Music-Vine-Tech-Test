@@ -2,6 +2,6 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-color: #f3f3f3;
+  background-color: var(--background-color);
   overflow-y: scroll;
 }

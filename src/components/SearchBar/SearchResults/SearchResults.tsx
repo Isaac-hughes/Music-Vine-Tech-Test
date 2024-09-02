@@ -25,7 +25,9 @@ export const SearchResults = ({
   return (
     <div className={styles.resultsWrapper}>
       {data.found === 0 ? (
-        <p>No tracks or sound effects found</p>
+        <div className={styles.noResults}>
+          <p>No tracks or sound effects found</p>
+        </div>
       ) : (
         <div className={styles.results}>
           <div className={styles.resultsMetaData}>
